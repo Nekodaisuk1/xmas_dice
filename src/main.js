@@ -589,7 +589,7 @@ function setupBounds() {
 
 async function loadDiceGLB() {
   const loader = new GLTFLoader()
-  const gltf = await loader.loadAsync('/xmas_dice.glb')
+  const gltf = await loader.loadAsync('./xmas_dice.glb')
   diceTemplate = gltf.scene
 
   // サイズ計測
