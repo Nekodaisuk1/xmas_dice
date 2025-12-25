@@ -177,8 +177,12 @@ function showCenterAnnounce(scoreData) {
       // 現在のコンボ数
       const comboCount = index + 1
       
+      // メリークリスマスの特別演出
+      const isMerryChristmas = role.word === 'メリークリスマス'
+      const roleClass = isMerryChristmas ? 'announce-role merry-christmas' : 'announce-role'
+      
       centerAnnounce.innerHTML = `
-        <div class="announce-role" style="font-size: ${72 * scale}px">${role.word}</div>
+        <div class="${roleClass}" style="font-size: ${72 * scale}px">${role.word}</div>
         <div class="announce-score" style="font-size: ${96 * scale}px">${role.base}</div>
         <div class="announce-bonus combo-count" style="font-size: ${40 * scale}px">COMBO × ${comboCount}</div>
       `

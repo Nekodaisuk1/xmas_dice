@@ -250,6 +250,29 @@ html, body { margin: 0; height: 100%; overflow: hidden; }
   letter-spacing: 0.05em;
   margin-bottom: 16px;
   animation: pulsate 0.6s ease-in-out;
+  white-space: nowrap;
+}
+
+.announce-role.merry-christmas {
+  background: linear-gradient(
+    90deg,
+    #ff0033 0%,
+    #ff9900 20%,
+    #ffcc00 40%,
+    #33ff33 60%,
+    #3399ff 80%,
+    #cc33ff 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: pulsate 0.6s ease-in-out, rainbow 3s linear infinite;
+  text-shadow: 
+    0 0 40px rgba(255, 0, 51, 0.8),
+    0 0 80px rgba(255, 204, 0, 0.6),
+    0 0 120px rgba(51, 255, 51, 0.4);
+  filter: drop-shadow(0 0 30px rgba(255, 0, 51, 1)) drop-shadow(0 0 60px rgba(255, 204, 0, 0.8));
 }
 
 .announce-score {
@@ -263,6 +286,7 @@ html, body { margin: 0; height: 100%; overflow: hidden; }
     0 0 120px rgba(255, 0, 51, 0.4),
     6px 6px 12px rgba(0, 0, 0, 0.7);
   animation: scoreUp 0.7s ease-out;
+  white-space: nowrap;
 }
 
 .announce-score.total-score {
@@ -342,6 +366,11 @@ html, body { margin: 0; height: 100%; overflow: hidden; }
   0%, 100% { transform: translateX(0) rotate(0deg); }
   25% { transform: translateX(-4px) rotate(-2deg); }
   75% { transform: translateX(4px) rotate(2deg); }
+}
+
+@keyframes rainbow {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
 }
 
 @keyframes pulsate {
