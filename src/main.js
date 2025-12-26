@@ -584,7 +584,7 @@ function setupBounds() {
 
   // walls
   const wallBody = world.createRigidBody(RAPIER.RigidBodyDesc.fixed())
-  const h = 6, t = 0.2, w = 10
+  const h = 12, t = 0.5, w = 10
   world.createCollider(RAPIER.ColliderDesc.cuboid(w, h, t).setTranslation(0, h, 10), wallBody)
   world.createCollider(RAPIER.ColliderDesc.cuboid(w, h, t).setTranslation(0, h, -10), wallBody)
   world.createCollider(RAPIER.ColliderDesc.cuboid(t, h, w).setTranslation(10, h, 0), wallBody)
@@ -628,14 +628,15 @@ function spawnDice10() {
     })
     scene.add(mesh)
 
-    const x = (Math.random() - 0.5) * 6
+    const x = (Math.random() - 0.5) * 4
     const y = 8 + Math.random() * 4
-    const z = (Math.random() - 0.5) * 6
+    const z = (Math.random() - 0.5) * 4
 
     const bodyDesc = RAPIER.RigidBodyDesc.dynamic()
       .setTranslation(x, y, z)
       .setLinearDamping(0.25)
       .setAngularDamping(0.25)
+      .setCcdEnabled(true)
 
     bodyDesc.setRotation({ x: Math.random(), y: Math.random(), z: Math.random(), w: Math.random() })
 
@@ -647,8 +648,8 @@ function spawnDice10() {
       .setFriction(0.9)
     world.createCollider(col, body)
 
-    body.applyImpulse({ x:(Math.random()-0.5)*2, y:0, z:(Math.random()-0.5)*2 }, true)
-    body.applyTorqueImpulse({ x:(Math.random()-0.5)*2, y:(Math.random()-0.5)*2, z:(Math.random()-0.5)*2 }, true)
+    body.applyImpulse({ x:(Math.random()-0.5)*1.5, y:0, z:(Math.random()-0.5)*1.5 }, true)
+    body.applyTorqueImpulse({ x:(Math.random()-0.5)*1.5, y:(Math.random()-0.5)*1.5, z:(Math.random()-0.5)*1.5 }, true)
 
     dice.push({ mesh, body })
   }
@@ -755,7 +756,7 @@ async function main() {
           if (s.maxCnt >= 5) {
             confetti.spawnBurst({ n: 450, y: 8.5, power: 8 })
           }
-          
+                    npm run dev
           const roleBadges = s.roleDetails.length
             ? s.roleDetails.map(r => `<span class="badge">${r.word} ${r.base}</span>`).join('')
             : `<span class="badge">役なし</span>`
