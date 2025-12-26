@@ -657,7 +657,7 @@ function spawnDice10() {
 // ===== 起動 =====
 async function main() {
   await RAPIER.init()
-  world = new RAPIER.World({ x: 0, y: -9.81, z: 0 })
+  world = new RAPIER.World({ x: 0, y: -19.62, z: 0 })
 
   setupBounds()
   await loadDiceGLB()
@@ -693,7 +693,7 @@ async function main() {
       const allSleep = dice.every(d => d.body.isSleeping())
       settledFrames = allSleep ? settledFrames + 1 : 0
 
-      if (settledFrames === 25) {
+      if (settledFrames === 12) {
         beep('settle')
 
         const chars = dice.map(d => getTopChar(d.mesh)).join('')
